@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             nice.setText("");
-            player.stop();
+            player.pause();
         }
     }
 
