@@ -28,7 +28,8 @@
         android:layout_height="60dp"
         android:layout_below="@+id/spazio1"
         android:text="+5"
-        android:id="@+id/incremento5" />
+        android:id="@+id/incremento5"
+        app:backgroundTint="@color/dodger_blue"/>
 
     <Button
         android:layout_width="170dp"
@@ -50,7 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/spazio2"
-        android:text="+" />
+        android:text="+"
+        app:backgroundTint="@color/dodger_blue"/>
 
     <Space
         android:layout_width="match_parent"
@@ -63,7 +65,8 @@
         android:layout_height="60dp"
         android:text="-"
         android:layout_below="@id/spazio3"
-        android:id="@+id/decremento" />
+        android:id="@+id/decremento"
+        app:backgroundTint="@color/dodger_blue"/>
 
     <Space
         android:layout_width="match_parent"
