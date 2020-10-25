@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#990000</color>
+    <color name="cyan">#20B2AA</color>
+    <color name="dodger_blue">#1E90FF</color>
+    <color name="green">#3CB371</color>
 </resources>

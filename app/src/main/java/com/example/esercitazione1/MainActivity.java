@@ -15,13 +15,12 @@ import com.google.android.material.textview.MaterialTextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button incremento, decremento;
-    EditText input,nice;
-    SeekBar seekBar;
-    MediaPlayer player;
+    Button incremento, decremento, incremento5, decremento5, reset;
+    EditText input;
+
     int minValue = 0;
-    int maxValue=100;
-    int currValue=50;
+    int maxValue = 100;
+    int currValue = 50;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         incremento = findViewById(R.id.incremento);
+        incremento5 = findViewById(R.id.incremento5);
         decremento = findViewById(R.id.decremento);
+        decremento5 = findViewById(R.id.decremento5);
         input = findViewById(R.id.input);
-        seekBar = findViewById(R.id.seekbar);
-        nice = findViewById(R.id.nice);
+        reset = findViewById(R.id.reset);
 
         updateValue(currValue);
 
@@ -44,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        incremento5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateValue(currValue + 5);
+            }
+        });
+
         decremento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,52 +59,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        decremento5.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                updateValue(seekBar.getProgress());
+            public void onClick(View v) {
+                //input.setText("-1");
+                updateValue(currValue - 5);
             }
+        });
 
+        reset.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                updateValue(seekBar.getProgress());
+            public void onClick(View v) {
+                updateValue(0);
             }
         });
     }
 
-    protected void updateValue(int newValue){
-        player = MediaPlayer.create(MainActivity.this,R.raw.nice_sound);
-        if(this.seekBar.getProgress() != this.currValue){
-            this.seekBar.setProgress(this.currValue);
-        }
-        newValue = newValue>maxValue ? maxValue : newValue;
-        newValue = newValue<minValue ? minValue : newValue;
-        this.currValue=newValue;
-        input.setText(""+this.currValue);
-
-        if(currValue == 69){
-            nice.setText("nice");
-            player.start();
-        }
-        else {
-            nice.setText("");
-            player.pause();
-        }
+    protected void updateValue(int newValue) {
+        newValue = newValue > maxValue ? maxValue : newValue;
+        newValue = newValue < minValue ? minValue : newValue;
+        this.currValue = newValue;
+        input.setText("" + this.currValue);
     }
-
-    /*
-    @Override
-    protected void onStop(){
-        super.onStop();
-
-        TextView helloworld = findViewById(R.id.helloworld);
-        helloworld.setText("on stop!");
-    }
-    */
-
 }
